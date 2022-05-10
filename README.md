@@ -65,7 +65,7 @@ Activity dataset contains observations about total steps, distance (with distinc
 head(activity,10)
 str(activity)
 
-any(is.na.data.frame(activity))
+sum(is.na.data.frame(activity))
 ```
 Formatting datatype in column *ActivityDate* (from *char* to *datetime*)
 ```
@@ -78,7 +78,7 @@ Calories dataset contains observation about calories burned by users in each day
 ```head(calories, 10)
 str(calories)
 
-any(is.na(calories))
+sum(is.na(calories))
 ```
 Formatting datatype in column *ActivityDay* (from *char* to *datetime*)
 
@@ -93,7 +93,7 @@ In this dataset observation about intensity of each training are stored. Minutes
 ```
 head(intensity)
 str(intensity)
-any(is.na(intensity))
+sum(is.na(intensity))
 ```
 
 Formating *ActivityDay* type (from *char* to *datetime*)
@@ -109,7 +109,7 @@ This dataset contains information about sleep duration and and minutes spend in 
 ```
 head(sleep)
 str(sleep)
-any(is.na(sleep))
+sum(is.na(sleep))
 ```
 Formatting *SleepDay* type (from *char* to *datetime*)
 
@@ -186,7 +186,7 @@ sum(duplicated(weight))
 
 Column names cleaning to get consistency in variables and renaming column in activity data
 ```
-6activity <- clean_names(activity)
+activity <- clean_names(activity)
 calories <- clean_names(calories)
 intensity <- clean_names(intensity)
 sleep <- clean_names(sleep)
