@@ -1,9 +1,10 @@
-# Bellabeat Fitness Case Study ![image](https://user-images.githubusercontent.com/73778853/167701549-7cd4b595-5cd2-4c9e-8d09-a3a9592800ce.png)
+# Bellabeat Fitness Case Study
+
 
 ### Capstone project of Google Data Analytics [Certificate](https://www.credly.com/badges/15e1da36-eef4-4abe-ad87-7e541b5717e8)
 
-Author: Aleksandra Matacz<br><br>
-Date: May 5, 2022
+Author: *Aleksandra Matacz*<br><br>
+Date: *May 10, 2022*
 
 
 
@@ -81,7 +82,9 @@ any(is.na(calories))
 ```
 Formatting datatype in column *ActivityDay* (from *char* to *datetime*)
 
-```calories$ActivityDay <- as.POSIXct(calories$ActivityDay, format = '%m/%d/%Y', tz=Sys.timezone())```
+```
+calories$ActivityDay <- as.POSIXct(calories$ActivityDay, format = '%m/%d/%Y', tz=Sys.timezone())
+```
 
 ***Intensity* dataset**
 
@@ -95,9 +98,11 @@ any(is.na(intensity))
 
 Formating *ActivityDay* type (from *char* to *datetime*)
 
-```intensity$ActivityDay <- as.POSIXct(intensity$ActivityDay, format = '%m/%d/%Y', tz=Sys.timezone())```
+```
+intensity$ActivityDay <- as.POSIXct(intensity$ActivityDay, format = '%m/%d/%Y', tz=Sys.timezone())
+```
 
-**Sleep* dataset**
+***Sleep* dataset**
 
 This dataset contains information about sleep duration and and minutes spend in bed.
 
@@ -108,7 +113,9 @@ any(is.na(sleep))
 ```
 Formatting *SleepDay* type (from *char* to *datetime*)
 
-```sleep$SleepDay <- as.POSIXct(sleep$SleepDay, format = '%m/%d/%Y', tz=Sys.timezone())```
+```
+sleep$SleepDay <- as.POSIXct(sleep$SleepDay, format = '%m/%d/%Y', tz=Sys.timezone())
+```
 
 ***Weight* dataset**
 
@@ -124,7 +131,9 @@ As in weight data set there are 65 NA values, I have take into consideration if 
 
 Formatting *Date* type (from *char* to *datetime*)
 
-```weight$Date <- as.POSIXct(weight$Date, format = '%m/%d/%Y %I:%M:%S %p', tz=Sys.timezone())```
+```
+weight$Date <- as.POSIXct(weight$Date, format = '%m/%d/%Y %I:%M:%S %p', tz=Sys.timezone())
+```
 
 ## Exploring and summarizing data
 Counting unique users in each dataset
@@ -268,8 +277,11 @@ We can observe that the majority of observations lay between 0 an 10000 steps pe
 
 Next analyze reveals if users that are making more steps during the day are burning more calories.
 
-```round(cor(activity$calories, activity$total_steps, method="pearson"),2)```
+```
+round(cor(activity$calories, activity$total_steps, method="pearson"),2)
+```
 0.59
+
 ```
 options(repr.plot.widht=10, repr.plot.height=10)
 
@@ -290,11 +302,14 @@ We can conclude, that users burning calories during various kinds of acitvities 
 To verify if more active day (more minutes spent on activities) is correlated with more minutes spent on sleeping I merged activity and sleep datasets and created new column activity_minutes (sum of every activity minutes recorded on particular day).
 
 ```
-activity_sleep_merged <- merge(activity, sleep, by=c('id', 'activity_day')) %>% mutate(activity_minutes=very_active_minutes+fairly_active_minutes+lightly_active_minutes)
+activity_sleep_merged <- merge(activity, sleep, by=c('id', 'activity_day')) %>%
+    mutate(activity_minutes=very_active_minutes+fairly_active_minutes+lightly_active_minutes)
 head(activity_sleep_merged)
 ```
 
-```round(cor(activity_sleep_merged$total_minutes_asleep, activity_sleep_merged$activity_minutes, method="pearson"),2)```
+```
+round(cor(activity_sleep_merged$total_minutes_asleep, activity_sleep_merged$activity_minutes, method="pearson"),2)
+```
 -0.07
 ```
 options(repr.plot.widht=10, repr.plot.height=10)
@@ -312,7 +327,7 @@ ggplot(data=activity_sleep_merged, aes(x=total_minutes_asleep, y=activity_minute
 Graph above shows that there is no correlation between minutes spent on activities and time asleep. Correlation value -0.07 is not significant.
 Right amount of high quality sleep is significant factor of health, to improve this area of users life, **Bellabeat can consider implementing feature that lets user track amount of sleep, quality of it and set sleeping schedule defined by user.**
 
-#Summary 🧾 📊
+# Summary 🧾 📊
 Bellabeat supports women in maintainig healthy lifestyle. Regular analyzing trends among smart-devices users is crucial to be up to date to follow company mission and answer users needs in best possible way. Nowadays smart devices gain more and more popularity - busy schedules and healthy habits don't have to be mutually exclusive. Bellabeat is like a friend who keeps you motivated, on track and is stylish.
 
 * Majority of users do some light activity to stay healthy and in shape, Bellabeat can encourage them to train more frequently or more efficiently by implementing challenge-like feature, ranking dependent on amount of trainings or training days strike. Fun competition can be motivation to increase users activity.
