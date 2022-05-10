@@ -227,7 +227,7 @@ Some interesing findings about each dataset summary:
 
 ## Analyze🧐✍️
 At first, I have analyzed and categorized users by frequency of usage. Datasets contain information collected in two months April-May 2016.
-That is why I set that 20 or more logged trainings qualifiy user as very active, between 20 and 10 trainings as active user, less than 10 - occasional user.
+That is why I set that 25 or more logged trainings qualifiy user as very active, between 20 and 10 trainings as active user, less than 10 - occasional user.
 ```
 activity_by_id <- activity %>% 
     group_by(id) %>%
@@ -256,9 +256,9 @@ ggplot(data=activity)+
 ![image](https://user-images.githubusercontent.com/73778853/167698113-b56cedc5-cf75-4bf7-bbd6-aca538233946.png)
 
 Chart above shows that most active users burn on average more calories than other users. This is what could be expected - more recorded trainings result with more calories burned.
-*Bellabeat can consider implementing challenge-like feature, ranking dependent on amount of trainings or training days strike. Fun competition can be motivation to increase users activity.*
+**Bellabeat can consider implementing challenge-like feature, ranking dependent on amount of trainings or training days strike. Fun competition can be motivation to increase users activity.**
 
-Next, I analyzed distribution of total steps recorded. Right amount of steps made during daily life can help to maintain good health. Nowadays more and more people have sedentary live style, works in front of computers and it is getting harder to reach steps goal. This is why devices that helps to monitor steps amount will be more and more popular.
+Next, I analyzed distribution of total steps recorded. Right amount of steps made during daily life can help to maintain good health. Nowadays more and more people have sedentary lifestyle, works in front of computers and it is getting harder to reach steps goal. This is why devices that help to monitor steps amount will be more and more popular.
 
 ```
 options(repr.plot.width=10, repr.plot.height=10)
@@ -296,7 +296,7 @@ ggplot(data=activity, aes(x=calories, y=total_steps, color=calories))+
  ![image](https://user-images.githubusercontent.com/73778853/167700526-5e0ac937-c945-4df6-abbf-ebae9e51c2fd.png)
  
 Corelation between burned calories and total steps equals 0.59. Which means that there is a moderate linear dependency between these two variables.
-We can conclude, that users burning calories during various kinds of acitvities - not only by walkich/jogging. Could be pilates, joga, gym activities.
+We can conclude, that users burning calories during various kinds of acitvities - not only by walking/jogging. It could be pilates, joga, gym activities etc.
 **Bellabeat can consider extension number of available activities that can be recorded as training.**
 
 To verify if more active day (more minutes spent on activities) is correlated with more minutes spent on sleeping I merged activity and sleep datasets and created new column activity_minutes (sum of every activity minutes recorded on particular day).
@@ -329,6 +329,8 @@ Right amount of high quality sleep is significant factor of health, to improve t
 
 # Summary 🧾 📊
 Bellabeat supports women in maintainig healthy lifestyle. Regular analyzing trends among smart-devices users is crucial to be up to date to follow company mission and answer users needs in best possible way. Nowadays smart devices gain more and more popularity - busy schedules and healthy habits don't have to be mutually exclusive. Bellabeat is like a friend who keeps you motivated, on track and is stylish.
+
+Findings and recommendation for Bellabeat strategy:
 
 * Majority of users do some light activity to stay healthy and in shape, Bellabeat can encourage them to train more frequently or more efficiently by implementing challenge-like feature, ranking dependent on amount of trainings or training days strike. Fun competition can be motivation to increase users activity.
 * Average user does 7638 steps per day - it is a bit too low. WHO recommends taking between 8000-12000 stes per day. Bellabeat can consider implementing feature where user can set daily steps goal and get alerted how many steps have been made and how many left to reach goal, in chosen interval (f.eg every two hours).
